@@ -3,6 +3,7 @@ const multer = require('multer')
 const ytdl = require('ytdl-core')
 const ffmpeg = require('fluent-ffmpeg')
 const path = require('path')
+const cors = require('cors')
 
 require('dotenv').config({ path: './config/.env' })
 
@@ -10,6 +11,8 @@ const app = express()
 const port = process.env.PORT
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
@@ -26,14 +29,6 @@ app.get('/style.css', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'style.css'))
 })
 
-// app.get('/', function (req, res) {
-// 	res.setHeader(
-// 		'Content-Security-Policy',
-// 		"style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"
-// 	)
-// 	res.sendFile(path.join(__dirname, 'index.html'))
-// })
-
 //$ Use multer for file uploads and downloads
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -47,12 +42,15 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 //$ YouTube url conversion
-app.post('/convert/youtube', (req, res) => {
-	const youtubeLink = req.body.youtubeLink
+app.post('/convert/youtube', upload.none(), (req, res) => {
+	console.log('Received request to /convert/youtube')
+	console.log('Request body:', req.body)
+	const youtubeLink = req.body.youtube
 	const conversionSettings = req.body.conversionSettings
 
 	//* Validate the YouTube link
 	if (!validateYouTubeLink(youtubeLink)) {
+		console.log('YouTube link validation failed')
 		res.status(400).json({
 			message: 'Invalid YouTube URL',
 		})

@@ -14,14 +14,22 @@
 			  <form id="conversion-form">
           <div>
             <input type="radio" name="conversion-type" value="youtube" checked>
-            <label for="youtube-link">YouTube Link</label>
+            <label for="youtube-link">YouTube Link to convert</label>
             <input type="text" id="youtube-link" placeholder="Enter YouTube link">
           </div>
+
           <div>
             <input type="radio" name="conversion-type" value="file">
-            <label for="file-input">Video File</label>
+            <label for="file-input">Video File to convert</label>
             <input type="file" id="file-input">
           </div>
+					<div>
+						<h6>Choose desired audio format</h6>
+						<select id="conversionSettings">
+							<option value="mp3">mp3</option>
+							<option value="mp4">mp4</option>
+						</select>
+					</div>
           <button type="submit">Convert</button>
         </form>
 
