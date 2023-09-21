@@ -3,41 +3,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>YouTube2Mp3</title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		<title>YouTube2Mp3</title>
 	</head>
 	<body>
 		<div class="container">
 			<div>
-			  <h1>Video to Audio Converter</h1>
-				<h3>Convert a video files or YouTube videos to MP3 audio files</h3>
-			  <form id="conversion-form">
-          <div>
-            <input type="radio" name="conversion-type" value="youtube" checked>
-            <label for="youtube-link">YouTube Link to convert</label>
-            <input type="text" id="youtube-link" placeholder="Enter YouTube link">
-          </div>
-
-          <div>
-            <input type="radio" name="conversion-type" value="file">
-            <label for="file-input">Video File to convert</label>
-            <input type="file" id="file-input">
-          </div>
-					<div>
-						<h6>Choose desired audio format</h6>
-						<select id="conversionSettings">
-							<option value="mp3">mp3</option>
-							<option value="mp4">mp4</option>
-						</select>
-					</div>
-          <button type="submit">Convert</button>
-        </form>
-
-			  <div id="result-container">
-				  <div id="result-text"></div>
-			      <button id="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button> 
+				<div>
+					<h1 class="heading">YouTube 2 MP3</h1>
+					<input type="text" class="URL-input" placeholder="Ex: https://www.youtube.com/watch?v=MtN1YnoL46Q">
+					<button class="convert-button" id="btn">Convert</button>
 				</div>
-			</div>
+			</div>	
 		</div>
 		<script src="script.js"></script>
 	</body>
