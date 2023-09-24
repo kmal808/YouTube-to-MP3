@@ -21,14 +21,14 @@ app.get('/downloadmp3', async (req, res, next) => {
 		if (!ytdl.validateURL(url)) {
 			return res.sendStatus(400)
 		}
-
 		let title = 'audio'
+
 		await ytdl.getBasicInfo(url, { format: 'mp4' }, (err, info) => {
-			if (err) {
-				console.error('Error fetching video info', err)
-				return res.sendStatus(500)
-			}
-			let title = info.videoDetails.title.replace(/[^a-zA-Z0-9]/g, '_')
+			if (err) throw err
+			title = info.player_response.videoDetails.title.replace(
+				/[^a-zA-Z0-9]/g,
+				''
+			)
 		})
 
 		res.header('Content-Disposition', `attachment; filename="${title}.mp3"`)
