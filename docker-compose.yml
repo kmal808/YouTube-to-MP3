@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  sharedlists:
+    image: yt2mp3
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      DB_STRING: db_connecton_string
+    ports:
+      - 2323:2323
