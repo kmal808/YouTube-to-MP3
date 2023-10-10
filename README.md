@@ -1,6 +1,6 @@
 # YouTube to MP3
 ## Convert YouTube video 📺 links to MP3 audio files 🎹
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/adf66c2d-97b9-461c-acb4-51e719a6a2cd/deploy-status)](https://app.netlify.com/sites/frabjous-blancmange-28fa37/deploys)
 ### Usage
 1. Visit the deployed app at https://yt2mp3.wtf.kim
 2. Paste a YouTube video link into the input field
