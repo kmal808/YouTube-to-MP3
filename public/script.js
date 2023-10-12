@@ -1,6 +1,6 @@
 let button = document.getElementById('btn')
 let input = document.querySelector('.URL-input')
-let serverURL = 'http://localhost:2323'
+let serverURL = `http://yt2mp3.wtf.kim` || `localhost:2323`
 
 button.addEventListener('click', () => {
 	if (!input.value) {

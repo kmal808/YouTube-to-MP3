@@ -54,5 +54,5 @@ app.get('/downloadmp3', async (req, res, next) => {
 })
 
 app.listen(port, () => {
-	console.log(`Server is running 🏃 on ${port}, better catch it ⚾!!`)
+	console.log(`Server is running 🏃 on PORT: ${port}, better catch it ⚾!!`)
 })
