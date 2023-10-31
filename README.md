@@ -8,6 +8,14 @@
 4. Wait for the conversion to complete
 5. The mp3 file will be downloaded _automagically_
 
+### TODO (in no particular order)
+- [ ] Add a progress bar showing current download size/speed and remaining downlodad
+- [ ] Design and add a favicon
+- [ ] Add an audio player widget
+- [ ] Add a "Copy Link" button
+- [ ] Add a "Share" button
+- [x] Add a QRCode for the audio file download link
+
 ### Development
 1. Clone the repo
   1a. `git clone + repo url`
