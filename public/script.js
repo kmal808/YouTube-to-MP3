@@ -1,6 +1,9 @@
-let button = document.getElementById('btn')
-let input = document.querySelector('.URL-input')
-let serverURL = `http://yt2mp3.wtf.kim` || `localhost:2323`
+const button = document.getElementById('btn')
+const input = document.querySelector('.URL-input')
+const serverURL = 'http://localhost:2323'
+// process.env.NODE_ENV === 'production'
+// 	? 'https://yt2mp3.wtf.kim'
+// 	: 'http://localhost:2323'
 
 button.addEventListener('click', () => {
 	if (!input.value) {
@@ -9,7 +12,6 @@ button.addEventListener('click', () => {
 		downloadmp3(input.value)
 	}
 })
-
 async function downloadmp3(query) {
 	const res = await fetch(`${serverURL}/downloadmp3?url=${query}`)
 	if (res.status === 200) {
@@ -22,6 +24,29 @@ async function downloadmp3(query) {
 		document.body.appendChild(a)
 		a.click()
 		window.URL.revokeObjectURL(url)
+
+		// Generate QR Code
+		const qrCodeContainer = document.getElementById('qrcode')
+		qrCodeContainer.innerHTML = ''
+		const qrCode = new QRCode(
+			qrCodeContainer,
+			{
+				text: `${url}`,
+				width: 128,
+				height: 128,
+				colorDark: '#000000',
+				colorLight: '#ffffff',
+				correctLevel: QRCode.CorrectLevel.H,
+			},
+			(err) => {
+				if (err) {
+					console.error(err)
+				} else {
+					document.getElementById('qrcode-container').style.display = 'block'
+					console.log('QR Code generated')
+				}
+			}
+		)
 	} else {
 		alert('Failed to download the audio. Please try again.')
 	}
