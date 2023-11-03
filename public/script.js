@@ -1,9 +1,15 @@
 const button = document.getElementById('btn')
 const input = document.querySelector('.URL-input')
-const serverURL = 'http://localhost:2323'
-// process.env.NODE_ENV === 'production'
-// 	? 'https://yt2mp3.wtf.kim'
-// 	: 'http://localhost:2323'
+const enviroment = process.env.NODE_ENV
+
+if (enviroment === 'production') {
+	serverURL = 'https://yt2mp3.wtf.kim'
+	console.log('Production')
+} else {
+	serverURL = 'http://localhost:2323'
+	console.log('Development')
+}
+// const serverURL = 'http://localhost:2323'
 
 button.addEventListener('click', () => {
 	if (!input.value) {
